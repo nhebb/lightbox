@@ -82,13 +82,19 @@ License: https://github.com/ashleydw/lightbox/blob/master/LICENSE
           if (this.options.directional_arrows && this.gallery_items.length > 1) {
             this.lightbox_container.append('<div class="ekko-lightbox-nav-overlay"><a href="#" class="' + this.strip_stops(this.options.left_arrow_class) + '"></a><a href="#" class="' + this.strip_stops(this.options.right_arrow_class) + '"></a></div>');
             this.modal_arrows = this.lightbox_container.find('div.ekko-lightbox-nav-overlay').first();
-            this.lightbox_container.find('a' + this.strip_spaces(this.options.left_arrow_class)).on('click', (function(_this) {
+            
+            var leftArrow = this.lightbox_container.find('a' + this.strip_spaces(this.options.left_arrow_class));
+            leftArrow.on('click', (function(_this) {
+              leftArrow.blur();
               return function(event) {
                 event.preventDefault();
                 return _this.navigate_left();
               };
             })(this));
-            this.lightbox_container.find('a' + this.strip_spaces(this.options.right_arrow_class)).on('click', (function(_this) {
+            
+            var rightArrow = this.lightbox_container.find('a' + this.strip_spaces(this.options.right_arrow_class));
+            rightArrow.on('click', (function(_this) {
+              rightArrow.blur();
               return function(event) {
                 event.preventDefault();
                 return _this.navigate_right();
